@@ -3,6 +3,7 @@ from searchFunctions import *
 from binaryTree import *
 import random
 import time
+import json
 import xlsxwriter
 
 # --- GENERATE RANGES ---
@@ -143,4 +144,14 @@ for r in dataRange:
   tempH[1]["data"].append(heightA) #heightTA
   tempH[2]["data"].append(heightB) #heightTB
   
+
+# --- JSON DATA ---
+with open("tempC.json", "w", encoding="utf-8") as file:
+    json.dump(tempC, file, indent=2)
+  
+with open("tempS.json", "w", encoding="utf-8") as file:
+    json.dump(tempS, file, indent=2)
+  
+with open("tempH.json", "w", encoding="utf-8") as file:
+    json.dump(tempH, file, indent=2)
   
