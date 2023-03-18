@@ -37,14 +37,14 @@ class Node:
         rightHeight = 0 if self.right is None else self.right.height()
         return max(leftHeight, rightHeight) + 1
 
-# --- Building Trees + Help functions ---
-
+# --- Building Trees ---
 def buildTree(array):
   tree = Node(array[0])
   for i in array[1:]:
     tree.insert(i)
   return tree
 
+# --- Preparing array in middle elements order ---
 def middleElements(array, output):
   if array != []:
     middleID = len(array)//2
