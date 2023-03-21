@@ -7,8 +7,8 @@ import json
 import xlsxwriter
 
 # --- GENERATE RANGES ---
-n = 1
-startNumber = 5000
+n = 5
+startNumber = 1000
 dataRange = [x for x in range(startNumber, startNumber + (n - 1) * 1000 + 1, 1000)]
 
 
@@ -154,4 +154,27 @@ with open("tempS.json", "w", encoding="utf-8") as file:
   
 with open("tempH.json", "w", encoding="utf-8") as file:
     json.dump(tempH, file, indent=2)
-  
+
+
+# --- EXCEL FILE ---
+workbook = xlsxwriter.Workbook("results-excel.xlsx")
+
+wsCreate = workbook.add_worksheet("create")
+for idx, t in enumerate(tempC):
+  wsCreate.write(0, idx, t["name"])
+  for i in range(len(t["data"])):
+    wsCreate.write(i+1, idx, t["data"][i])
+
+wsSearch = workbook.add_worksheet("search")
+for idx, t in enumerate(tempS):
+  wsSearch.write(0, idx, t["name"])
+  for i in range(len(t["data"])):
+    wsSearch.write(i+1, idx, t["data"][i])
+
+wsHeight = workbook.add_worksheet("height")
+for idx, t in enumerate(tempH):
+  wsHeight.write(0, idx, t["name"])
+  for i in range(len(t["data"])):
+    wsHeight.write(i+1, idx, t["data"][i])
+
+workbook.close()
