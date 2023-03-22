@@ -1,6 +1,7 @@
 from quickSort import sortQS
 from searchFunctions import *
 from binaryTree import *
+from array import array
 import random
 import time
 import json
@@ -73,7 +74,7 @@ tempH = [
 
 # --- GENERATE DATA ---
 for r in dataRange:
-  tabA = []
+  tabA = array('i', [])
   while len(tabA) < r:
     el = random.randint(1, r)
     if el not in tabA: 
@@ -81,7 +82,7 @@ for r in dataRange:
 
   # --- (2) Making a copy and sorting (QS) ---
   startSortcopy = time.time()
-  tabB = tabA.copy()
+  tabB = array('i', [t for t in tabA])
   sortQS(tabB, 0, len(tabB) - 1)
   resultSortcopy = time.time() - startSortcopy
 
@@ -111,8 +112,8 @@ for r in dataRange:
 
   # --- (4) Build tree base tabB, height and search time measure ---
   # - Prepare -
-  tabB2temp = tabB.copy()
-  tabB2 = []
+  tabB2temp = array('i', [t for t in tabB])
+  tabB2 = array('i', [])
   middleElements(tabB2temp, tabB2)
   # - Build -
   startTreeB = time.time()

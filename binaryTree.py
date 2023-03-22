@@ -46,7 +46,7 @@ def buildTree(array):
 
 # --- Preparing array in middle elements order ---
 def middleElements(array, output):
-  if array != []:
+  if len(array) != 0:
     middleID = len(array)//2
     middle = array[middleID]
     output.append(middle)
